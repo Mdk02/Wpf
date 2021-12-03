@@ -1,0 +1,23 @@
+﻿<Window x:Class="WpfApp1.AddProposalWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="AddProposalWindow" Height="367.5" Width="600.5">
+    <Grid x:Name="grid">
+        <TextBox x:Name="Square" HorizontalAlignment="Left" Height="23" Margin="30,27,0,0" TextWrapping="Wrap" Text="Площадь" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="CountRooms" HorizontalAlignment="Left" Height="23" Margin="30,65,0,0" TextWrapping="Wrap" Text="Количество комнат" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Number" HorizontalAlignment="Left" Height="23" Margin="30,103,0,0" TextWrapping="Wrap" Text="Номер в доме" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="NumberOfHouse" HorizontalAlignment="Left" Height="23" Margin="30,140,0,0" TextWrapping="Wrap" Text="Номер дома" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Street" HorizontalAlignment="Left" Height="23" Margin="30,179,0,0" TextWrapping="Wrap" Text="Улица" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="District" HorizontalAlignment="Left" Height="23" Margin="30,218,0,0" TextWrapping="Wrap" Text="Район" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="City" HorizontalAlignment="Left" Height="23" Margin="187,27,0,0" TextWrapping="Wrap" Text="Город" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Description" HorizontalAlignment="Left" Height="61" Margin="187,65,0,0" TextWrapping="Wrap" Text="Описание" VerticalAlignment="Top" Width="200"/>
+        <TextBox x:Name="Price" HorizontalAlignment="Left" Height="23" Margin="187,153,0,0" TextWrapping="Wrap" Text="Цена" VerticalAlignment="Top" Width="120"/>
+        <RadioButton  x:Name="PrimaryOrSecondaryHousing" Content="Первичное? Если да, то отметить" HorizontalAlignment="Left" Margin="187,190,0,0" VerticalAlignment="Top" Height="28" Width="213"/>
+        <Button Content="Создать" HorizontalAlignment="Left" Margin="30,263,0,0" VerticalAlignment="Top" Width="165" Height="32" Click="Button_Click"/>
+
+    </Grid>
+</Window>
