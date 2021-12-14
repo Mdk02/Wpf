@@ -7,12 +7,12 @@
         mc:Ignorable="d"
         Title="Registr" Height="345" Width="563">
     <Grid x:Name="grid">
-        <TextBox x:Name="Login" HorizontalAlignment="Left" Height="24" Margin="54,30,0,0" TextWrapping="Wrap" Text="Mail" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="Password" HorizontalAlignment="Left" Height="24" Margin="54,75,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="LastName" HorizontalAlignment="Left" Height="24" Margin="216,30,0,0" TextWrapping="Wrap" Text="LastName" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="Name" HorizontalAlignment="Left" Height="24" Margin="216,75,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="Patronymic" HorizontalAlignment="Left" Height="24" Margin="216,120,0,0" TextWrapping="Wrap" Text="Patronymic" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="TelNumber" HorizontalAlignment="Left" Height="24" Margin="54,120,0,0" TextWrapping="Wrap" Text="TelNumber" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Login" HorizontalAlignment="Left" Height="24" Margin="54,30,0,0" TextWrapping="Wrap" Text="Почта" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Password" HorizontalAlignment="Left" Height="24" Margin="54,75,0,0" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="LastName" HorizontalAlignment="Left" Height="24" Margin="216,30,0,0" TextWrapping="Wrap" Text="Фамилия" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Name" HorizontalAlignment="Left" Height="24" Margin="216,75,0,0" TextWrapping="Wrap" Text="Имя" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Patronymic"  HorizontalAlignment="Left" Height="24" Margin="216,120,0,0" TextWrapping="Wrap" Text="Отчество" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TelNumber" HorizontalAlignment="Left" Height="24" Margin="54,120,0,0" TextWrapping="Wrap" Text="Телефонный номер" VerticalAlignment="Top" Width="120"/>
         <DatePicker x:Name="BirthDate" HorizontalAlignment="Left" Margin="54,174,0,0" VerticalAlignment="Top" Height="22" Width="120"/>
         <Button Content="Зарегистрироваться" HorizontalAlignment="Left" Margin="54,215,0,0" VerticalAlignment="Top" Width="132" Height="22" Click="Button_Click"/>
     </Grid>

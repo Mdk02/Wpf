@@ -1,3 +1,4 @@
 {"Id":0,"IdUser":4,"IdProposal":0}
 {"Id":1,"IdUser":4,"IdProposal":1}
 {"Id":2,"IdUser":13,"IdProposal":0}
+{"Id":3,"IdUser":5,"IdProposal":0}

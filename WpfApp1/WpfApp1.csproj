@@ -107,6 +107,9 @@
     <Compile Include="Responses.xaml.cs">
       <DependentUpon>Responses.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SeparateProposal.xaml.cs">
+      <DependentUpon>SeparateProposal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserProfile.xaml.cs">
       <DependentUpon>UserProfile.xaml</DependentUpon>
     </Compile>
@@ -143,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Responses.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SeparateProposal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -189,6 +196,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\Proposals.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Photos\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets')" />

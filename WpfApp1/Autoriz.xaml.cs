@@ -62,6 +62,18 @@ namespace WpfApp1
             Application.Current.Shutdown();
         }
 
+        void Save()
+        {
+            if (SavePassword.IsChecked.Value)
+            {
+
+            }
+        }
+
+
+
+
+
         //public User GetCurrentUser() { }
     }
 }

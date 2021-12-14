@@ -9,5 +9,9 @@
     <Grid>
         <ListBox x:Name="UsersListBox" HorizontalAlignment="Left" Height="327" Margin="40,46,0,0" VerticalAlignment="Top" Width="286"/>
         <Button Content="Поменять роль" HorizontalAlignment="Left" Margin="368,341,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="Button_Click"/>
+        <TextBox x:Name="SearchUser" HorizontalAlignment="Left" Height="32" Margin="368,115,0,0" TextWrapping="Wrap" Text="Поиск по логину" VerticalAlignment="Top" Width="159"/>
+        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Удалить" HorizontalAlignment="Left" Margin="508,341,0,0" VerticalAlignment="Top" Width="94" Height="32" Click="Button_Click_1"/>
     </Grid>
 </Window>

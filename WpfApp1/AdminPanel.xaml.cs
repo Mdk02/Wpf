@@ -21,11 +21,12 @@ namespace WpfApp1
         public AdminPanel()
         {
             InitializeComponent();
-            this.Closed += AdminPanel_Closed;
+            Closed += AdminPanel_Closed;
 
             users = new DataMethodsUser().GetAllDataUsers().ToList();
 
-            ShowUsers();
+            ShowUsers(users);
+            SearchLogic();
         }
 
         private void AdminPanel_Closed(object sender, EventArgs e)
@@ -33,7 +34,7 @@ namespace WpfApp1
             new DataMethodsUser().RewriteAllUsers(users);
         }
 
-        void ShowUsers()
+        void ShowUsers(List<User> users)
         {
             users.ForEach(i => UsersListBox.Items.Add(i.Login + "  " + i.Lastname + "  " + i.Name + "  " + i.Patronymic + "  " + i.Role));
         }
@@ -49,15 +50,39 @@ namespace WpfApp1
 
                 if (tempUser.Role.Equals("Rieltor"))
                 {
-                    tempUser.Role = "user";
+                    tempUser.Role = "Admin";
                 }
                 else if (tempUser.Role.Equals("user"))
                 {
                     tempUser.Role = "Rieltor";
                 }
+                else
+                {
+                    tempUser.Role = "user";
+                }
 
                 users.Add(tempUser);
                 UsersListBox.Items.Add(tempUser.Login + "  " + tempUser.Lastname + "  " + tempUser.Name + "  " + tempUser.Patronymic + "  " + tempUser.Role);
+            }
+        }
+
+        void SearchLogic()
+        {
+            SearchUser.TextChanged += new TextChangedEventHandler((object sender, TextChangedEventArgs target) =>
+            {
+                UsersListBox.Items.Clear();
+                ShowUsers(users.Where(us => us.Login.StartsWith(SearchUser.Text)).ToList());
+            });
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if(UsersListBox.SelectedItem != null)
+            {
+                User tempUser = users.FirstOrDefault(t => t.Login == UsersListBox.SelectedItem.ToString().Split(' ')[0]);
+
+                users.Remove(tempUser);
+                UsersListBox.Items.Remove(UsersListBox.SelectedItem);
             }
         }
     }

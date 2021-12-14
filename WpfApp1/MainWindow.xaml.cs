@@ -17,6 +17,8 @@ using WpfApp1.Models;
 
 namespace WpfApp1
 {
+    //сделать кнопку назад, отдельное окно для предложения, дизайн, фотки, бан 
+
     public partial class MainWindow : Window
     {
         public static User Current_user;
@@ -221,9 +223,9 @@ namespace WpfApp1
                         stackPanel.Children.Add(delete_button);
                     }
 
-                    
 
-                    if (MainWindow.Current_user.Role.Equals("user"))
+                    
+                    if (MainWindow.Current_user.Role.Equals("user") && MainWindow.Current_user.Id != prop.UserId)
                     {
                         var request_button = new Button
                         {

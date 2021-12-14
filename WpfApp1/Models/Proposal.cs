@@ -16,5 +16,6 @@ namespace WpfApp1.Models
         public string Description { get; set; }
         public int UserId { get; set; }
         public int Price { get; set; }
+        //add photos
     }
 }

@@ -15,7 +15,7 @@ namespace WpfApp1.Models
         public string TelNumber { get; set; }
         public DateTime BirthDate { get; set; }
         
-        //user, rieltor, admin
+        //user, rieltor, admin   add ban
         public string Role { get; set; }
     }
 }
