@@ -12,11 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfApp1.Models;
+using Microsoft.Win32;
+using System.IO;
 
 namespace WpfApp1
 {
     public partial class AddProposalWindow : Window
     {
+        List<string> files = new List<string>();
         public AddProposalWindow()
         {
             InitializeComponent();
@@ -27,17 +30,17 @@ namespace WpfApp1
         {
             Proposal proposal = null;
 
-            //foreach (UIElement elem in grid.Children)
-            //{
-            //    if (elem is TextBox)
-            //    {
-            //        if (string.IsNullOrEmpty((elem as TextBox).Text))
-            //        {
-            //            MessageBox.Show("не все поля заполнены");
-            //            return;
-            //        }
-            //    }
-            //}
+            foreach (UIElement elem in grid.Children)
+            {
+                if (elem is TextBox)
+                {
+                    if (string.IsNullOrEmpty((elem as TextBox).Text))
+                    {
+                        MessageBox.Show("не все поля заполнены");
+                        return;
+                    }
+                }
+            }
 
             if (!int.TryParse(Square.Text, out _))
             {
@@ -60,11 +63,28 @@ namespace WpfApp1
             {
                 MessageBox.Show("такая запись есть");
             }
+            else if (files.Count > 3 || files.Count < 1)
+            {
+                MessageBox.Show("фотографий должно быть от 1 до 3");
+                files.Clear();
+            }
             else
-            {             
+            {
+                int id = MainWindow.proposals.LastOrDefault() == default ? 0 : MainWindow.proposals.Last().Id + 1;
+                string path = $@"C:\Users\1\Desktop\2\WpfApp1\Photos\{id}";
+                
+                if (Directory.Exists(path))
+                {
+                    var files = Directory.GetFiles(path);
+                    foreach (var f in files)
+                    {
+                        File.Delete(f);
+                    }
+                }
+
                 proposal = new Proposal
                 {
-                    Id = MainWindow.proposals.Last().Id + 1,
+                    Id = id,
                     Square = Convert.ToInt32(Square.Text),
                     CountRooms = Convert.ToInt32(CountRooms.Text),
                     Number = Number.Text,
@@ -75,13 +95,55 @@ namespace WpfApp1
                     Description = Description.Text,
                     UserId = MainWindow.Current_user.Id,
                     Price = Convert.ToInt32(Price.Text),
-                    PrimaryOrSecondaryHousing = (bool)PrimaryOrSecondaryHousing.IsChecked
+                    PrimaryOrSecondaryHousing = (bool)PrimaryOrSecondaryHousing.IsChecked,
+                    Photos = path
                 };
 
                 new DataMethodsProposal().AddProposal(proposal);
                 MainWindow.proposals.Add(proposal);
 
+                AddFiles(proposal.Id);
+
                 MessageBox.Show("предложение было создано");
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Multiselect = true;
+
+            if (openFileDialog1.ShowDialog() == true)
+            {                
+                foreach(var f in openFileDialog1.FileNames)
+                {
+                    string ext = System.IO.Path.GetExtension(f);
+                    if (ext == ".png" || ext == ".jpg")
+                    {
+                        files.Add(f);       
+                    }
+                    else
+                    {
+                        MessageBox.Show("должны быть картинки");
+                        files.Clear();
+                        return;
+                    }
+                }
+            }
+        }
+
+        void AddFiles(int id)
+        {
+            string path = $@"C:\Users\1\Desktop\2\WpfApp1\Photos\{id}";
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory($@"C:\Users\1\Desktop\2\WpfApp1\Photos\{id}");
+            }
+
+            foreach (string file in files)
+            {
+                string name = file.Split('\\')[file.Split('\\').Length - 1];
+                File.Copy(file, $@"C:\Users\1\Desktop\2\WpfApp1\Photos\{id}\{name}");
             }
         }
     }

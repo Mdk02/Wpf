@@ -6,18 +6,37 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="AddProposalWindow" Height="367.5" Width="600.5">
-    <Grid x:Name="grid">
-        <TextBox x:Name="Square" HorizontalAlignment="Left" Height="23" Margin="30,27,0,0" TextWrapping="Wrap" Text="Площадь" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="CountRooms" HorizontalAlignment="Left" Height="23" Margin="30,65,0,0" TextWrapping="Wrap" Text="Количество комнат" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="Number" HorizontalAlignment="Left" Height="23" Margin="30,103,0,0" TextWrapping="Wrap" Text="Номер в доме" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="NumberOfHouse" HorizontalAlignment="Left" Height="23" Margin="30,140,0,0" TextWrapping="Wrap" Text="Номер дома" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="Street" HorizontalAlignment="Left" Height="23" Margin="30,179,0,0" TextWrapping="Wrap" Text="Улица" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="District" HorizontalAlignment="Left" Height="23" Margin="30,218,0,0" TextWrapping="Wrap" Text="Район" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="City" HorizontalAlignment="Left" Height="23" Margin="187,27,0,0" TextWrapping="Wrap" Text="Город" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="Description" HorizontalAlignment="Left" Height="61" Margin="187,65,0,0" TextWrapping="Wrap" Text="Описание" VerticalAlignment="Top" Width="200"/>
-        <TextBox x:Name="Price" HorizontalAlignment="Left" Height="23" Margin="187,153,0,0" TextWrapping="Wrap" Text="Цена" VerticalAlignment="Top" Width="120"/>
-        <RadioButton  x:Name="PrimaryOrSecondaryHousing" Content="Первичное? Если да, то отметить" HorizontalAlignment="Left" Margin="187,190,0,0" VerticalAlignment="Top" Height="28" Width="213"/>
+    <Grid x:Name="grid" RenderTransformOrigin="0.461,0.409">
+        <TextBox x:Name="Square" HorizontalAlignment="Left" Height="23" Margin="116,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,0.5">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="1.002"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+        <TextBox x:Name="CountRooms" HorizontalAlignment="Left" Height="23" Margin="116,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Number" HorizontalAlignment="Left" Height="23" Margin="116,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="NumberOfHouse" HorizontalAlignment="Left" Height="23" Margin="116,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Street" HorizontalAlignment="Left" Height="23" Margin="116,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="District" HorizontalAlignment="Left" Height="23" Margin="116,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="City" HorizontalAlignment="Left" Height="23" Margin="353,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Description" HorizontalAlignment="Left" Height="61" Margin="353,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <TextBox x:Name="Price" HorizontalAlignment="Left" Height="23" Margin="353,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <RadioButton  x:Name="PrimaryOrSecondaryHousing" Content="Первичное? Если да, то отметить" HorizontalAlignment="Left" Margin="276,213,0,0" VerticalAlignment="Top" Height="28" Width="213"/>
         <Button Content="Создать" HorizontalAlignment="Left" Margin="30,263,0,0" VerticalAlignment="Top" Width="165" Height="32" Click="Button_Click"/>
+        <Label Content="Площадь" HorizontalAlignment="Left" Margin="22,22,0,0" VerticalAlignment="Top" Width="64" Height="23"/>
+        <Label Content="Кол комнат" HorizontalAlignment="Left" Margin="22,65,0,0" VerticalAlignment="Top" Width="79" Height="23"/>
+        <Label Content="Номер в доме" HorizontalAlignment="Left" Margin="25,103,0,0" VerticalAlignment="Top" Width="91" Height="23"/>
+        <Label Content="Номер дома" HorizontalAlignment="Left" Margin="25,140,0,0" VerticalAlignment="Top" Width="91" Height="23"/>
+        <Label Content="Улица" HorizontalAlignment="Left" Margin="57,179,0,0" VerticalAlignment="Top" Width="59" Height="23"/>
+        <Label Content="Район" HorizontalAlignment="Left" Margin="57,218,0,0" VerticalAlignment="Top" Width="59" Height="23"/>
+        <Label Content="Город" HorizontalAlignment="Left" Margin="276,39,0,0" VerticalAlignment="Top" Height="23" Width="59"/>
+        <Label Content="Описание" HorizontalAlignment="Left" Margin="276,85,0,0" VerticalAlignment="Top"/>
+        <Label Content="Цена" HorizontalAlignment="Left" Margin="276,163,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="335,263,0,0" VerticalAlignment="Top" Width="91" Height="32" Click="Button_Click_1"/>
 
     </Grid>
 </Window>

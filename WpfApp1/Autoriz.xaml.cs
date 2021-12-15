@@ -69,11 +69,5 @@ namespace WpfApp1
 
             }
         }
-
-
-
-
-
-        //public User GetCurrentUser() { }
     }
 }

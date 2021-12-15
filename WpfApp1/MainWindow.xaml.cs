@@ -17,7 +17,7 @@ using WpfApp1.Models;
 
 namespace WpfApp1
 {
-    //сделать кнопку назад, отдельное окно для предложения, дизайн, фотки, бан 
+    // сменить пути
 
     public partial class MainWindow : Window
     {
@@ -30,7 +30,11 @@ namespace WpfApp1
         {
             InitializeComponent();
 
-            new Autoriz().ShowDialog();
+            if (Current_user == null)
+            {
+                new Autoriz().ShowDialog();
+            }
+
 
             proposals = new DataMethodsProposal().GetAllDataProposals().ToList();
             requests = new DataMethodRequests().GetAllDataRequests().ToList();
@@ -116,6 +120,29 @@ namespace WpfApp1
 
             Filters.Children.Add(textBox);
 
+            var exit = new Button
+            {
+                Content = "выйти",
+                Margin = new Thickness(15, 0, 0, 0),
+                MaxHeight = 40
+            };
+
+            exit.Click += new RoutedEventHandler((object sender, RoutedEventArgs target) =>
+            {
+                Hide();
+                Current_user = null;
+                new Autoriz().ShowDialog();
+
+                MainContent.Children.Clear();
+                Filters.Children.Clear();
+
+                Show();
+                ShowFilter();
+                ShowProposals(proposals);
+            });
+
+            Filters.Children.Add(exit);
+
             if (MainWindow.Current_user != null && MainWindow.Current_user.Role.Equals("Admin"))
             {
                 var admin_button = new Button
@@ -153,28 +180,27 @@ namespace WpfApp1
                         BorderBrush = Brushes.Black
                     };
 
-                    Label mainDescription = new Label();
-                    mainDescription.Content = prop.Description;
-
-                    Label header = new Label();
-                    header.Content = (prop.PrimaryOrSecondaryHousing ? "Первичное" : "Вторичное") + ", " + prop.CountRooms.ToString() + " комнатная, " + prop.Square.ToString() + "м2"; ;
+                    Label header = new Label
+                    {
+                        Content = (prop.PrimaryOrSecondaryHousing ? "Первичное" : "Вторичное") + ", " + prop.CountRooms.ToString() + " комнатная, " + prop.Square.ToString() + "м2"
+                    };
 
                     #region
-                    //header.MouseEnter += new MouseEventHandler((object sender, MouseEventArgs e) =>
-                    //{
-                    //    header.Foreground = Brushes.Red;
-                    //});
+                    header.MouseEnter += new MouseEventHandler((object sender, MouseEventArgs e) =>
+                    {
+                        header.Foreground = Brushes.Red;
+                    });
 
-                    //header.MouseLeave += new MouseEventHandler((object sender, MouseEventArgs e) =>
-                    //{
-                    //    header.Foreground = Brushes.Black;
-                    //});
+                    header.MouseLeave += new MouseEventHandler((object sender, MouseEventArgs e) =>
+                    {
+                        header.Foreground = Brushes.Black;
+                    });
 
-                    //header.MouseLeftButtonDown += new MouseButtonEventHandler((object sender, MouseButtonEventArgs e) =>
-                    //{
-                    //    SeparateProposal separateProposal = new SeparateProposal(prop);
-                    //    separateProposal.ShowDialog();
-                    //});
+                    header.MouseLeftButtonDown += new MouseButtonEventHandler((object sender, MouseButtonEventArgs e) =>
+                    {
+                        SeparateProposal separateProposal = new SeparateProposal(prop);
+                        separateProposal.ShowDialog();
+                    });
                     #endregion
 
                     Label price = new Label()
@@ -189,7 +215,17 @@ namespace WpfApp1
                     };
 
                     stackPanel.Children.Add(header);
-                    stackPanel.Children.Add(mainDescription);
+
+                    string file = Directory.GetFiles($@"C:\Users\1\Desktop\2\WpfApp1\Photos\{prop.Id}")[0];
+                    Image image = new Image();
+                    image.Source = new BitmapImage(
+                        new Uri(file));
+                    image.Width = 100;
+                    image.Height = 120;
+                    image.HorizontalAlignment = HorizontalAlignment.Left;
+                    image.Stretch = Stretch.Uniform;
+
+                    stackPanel.Children.Add(image);
                     stackPanel.Children.Add(price);
                     stackPanel.Children.Add(new Label
                     {
@@ -221,38 +257,6 @@ namespace WpfApp1
                         });
 
                         stackPanel.Children.Add(delete_button);
-                    }
-
-
-                    
-                    if (MainWindow.Current_user.Role.Equals("user") && MainWindow.Current_user.Id != prop.UserId)
-                    {
-                        var request_button = new Button
-                        {
-                            Content = "Откликнуться"
-                        };
-
-                        request_button.Click += new RoutedEventHandler((object sender, RoutedEventArgs target) =>
-                        {
-                            Request request = new Request
-                            {
-                                Id = MainWindow.requests.Any() ? MainWindow.requests.Last().Id + 1 : 0,
-                                IdProposal = prop.Id,
-                                IdUser = MainWindow.Current_user.Id,
-                            };
-
-                            if (MainWindow.requests.Any() && MainWindow.requests.Exists(t => t.IdProposal == request.IdProposal && t.IdUser == request.IdUser))
-                            {
-                                MessageBox.Show("запрос уже отправлен");
-                                return;
-                            }
-
-                            MessageBox.Show("запрос отправлен");
-                            requests.Add(request);
-                            new DataMethodRequests().AddRequest(request);
-                        });
-
-                        stackPanel.Children.Add(request_button);
                     }
 
                     border.Child = stackPanel;
