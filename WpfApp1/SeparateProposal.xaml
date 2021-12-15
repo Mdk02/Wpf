@@ -10,10 +10,10 @@
         <Image x:Name="first" HorizontalAlignment="Left" Height="186" Margin="109,86,0,0" VerticalAlignment="Top" Width="153"/>
         <Image x:Name="second" HorizontalAlignment="Left" Height="186" Margin="311,86,0,0" VerticalAlignment="Top" Width="154"/>
         <Image x:Name="third" HorizontalAlignment="Left" Height="186" Margin="510,86,0,0" VerticalAlignment="Top" Width="152"/>
-        <TextBox x:Name="header" HorizontalAlignment="Left" Height="33" Margin="30,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
-        <TextBox x:Name="desc" HorizontalAlignment="Left" Height="84" Margin="30,324,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="555"/>
+        <TextBox IsReadOnly="True" x:Name="header" HorizontalAlignment="Left" Height="33" Margin="30,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
+        <TextBox IsReadOnly="True" x:Name="desc" HorizontalAlignment="Left" Height="84" Margin="30,324,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="555"/>
         <Button Visibility="Hidden" x:Name="send" Content="Отправить заявку" HorizontalAlignment="Left" Margin="612,370,0,0" VerticalAlignment="Top" Width="126" Height="38" Click="Button_Click"/>
-        <TextBox x:Name="priceTextBox" HorizontalAlignment="Left" Height="33" Margin="570,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
+        <TextBox IsReadOnly="True" x:Name="priceTextBox" HorizontalAlignment="Left" Height="33" Margin="570,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
 
     </Grid>
 </Window>

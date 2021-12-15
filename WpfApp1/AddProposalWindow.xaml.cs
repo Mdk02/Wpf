@@ -71,7 +71,7 @@ namespace WpfApp1
             else
             {
                 int id = MainWindow.proposals.LastOrDefault() == default ? 0 : MainWindow.proposals.Last().Id + 1;
-                string path = $@"C:\Users\1\Desktop\2\WpfApp1\Photos\{id}";
+                string path = MainWindow.pathPhotos + id.ToString();
                 
                 if (Directory.Exists(path))
                 {
@@ -134,16 +134,16 @@ namespace WpfApp1
 
         void AddFiles(int id)
         {
-            string path = $@"C:\Users\1\Desktop\2\WpfApp1\Photos\{id}";
+            string path = MainWindow.pathPhotos + id.ToString();
             if (!Directory.Exists(path))
             {
-                Directory.CreateDirectory($@"C:\Users\1\Desktop\2\WpfApp1\Photos\{id}");
+                Directory.CreateDirectory(path);
             }
 
             foreach (string file in files)
             {
                 string name = file.Split('\\')[file.Split('\\').Length - 1];
-                File.Copy(file, $@"C:\Users\1\Desktop\2\WpfApp1\Photos\{id}\{name}");
+                File.Copy(file, $@"{path}\{name}");
             }
         }
     }
