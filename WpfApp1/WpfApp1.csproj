@@ -193,6 +193,7 @@
   <ItemGroup>
     <Resource Include="Data\Responses.txt" />
     <Resource Include="Data\Requests.txt" />
+    <Resource Include="Data\LastUser.txt" />
     <Content Include="Data\Users.txt" />
   </ItemGroup>
   <ItemGroup>
