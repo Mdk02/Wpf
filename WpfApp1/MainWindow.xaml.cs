@@ -25,6 +25,7 @@ namespace WpfApp1
         public static List<Proposal> proposals;
         public static List<Request> requests;
         public static List<Response> responses;
+        public static string pathPhotos = @"C:\Users\1\Desktop\2\WpfApp1\Photos\";
 
         public MainWindow()
         {
@@ -216,7 +217,7 @@ namespace WpfApp1
 
                     stackPanel.Children.Add(header);
 
-                    string file = Directory.GetFiles($@"C:\Users\1\Desktop\2\WpfApp1\Photos\{prop.Id}")[0];
+                    string file = Directory.GetFiles(pathPhotos + prop.Id)[0];
                     Image image = new Image();
                     image.Source = new BitmapImage(
                         new Uri(file));

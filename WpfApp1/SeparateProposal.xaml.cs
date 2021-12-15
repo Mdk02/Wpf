@@ -35,7 +35,7 @@ namespace WpfApp1
                 send.Visibility = Visibility.Visible;
             }
 
-            string[] file = Directory.GetFiles($@"C:\Users\1\Desktop\2\WpfApp1\Photos\{current_propos.Id}");
+            string[] file = Directory.GetFiles(MainWindow.pathPhotos + current_propos.Id);
 
             if(file.Length == 1)
             {
